@@ -10,6 +10,8 @@
   --accent-soft: rgba(88, 214, 173, .1);
   --line: rgba(237, 243, 240, .1);
   --max-width: 1180px;
+  --font-geist-sans: "Segoe UI", Arial, sans-serif;
+  --font-geist-mono: "Cascadia Code", "Courier New", monospace;
 }
 
 * { box-sizing: border-box; }
@@ -23,7 +25,7 @@ body {
   margin: 0;
   color: var(--text);
   background: var(--bg);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-family: var(--font-geist-sans);
   overflow-x: hidden;
 }
 

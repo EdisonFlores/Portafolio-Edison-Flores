@@ -14,10 +14,10 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "vinext dev",
-    "build": "vinext build",
-    "start": "vinext start",
-    "test": "npm run build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "pnpm build",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {
