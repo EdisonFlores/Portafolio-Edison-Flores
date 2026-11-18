@@ -22,7 +22,6 @@ import {
   Menu,
   Network,
   Palette,
-  Route,
   Server,
   Smartphone,
   Wrench,
@@ -36,9 +35,10 @@ const Instagram = Palette;
 type Project = {
   title: string;
   category: string;
-  status: "Operativo" | "Propuesta";
+  status: "Operativo" | "En desarrollo";
   description: string;
   image: string;
+  imageAlt: string;
   imageFit?: "cover" | "contain";
   live?: string;
   technologies: Array<{ label: string; icon: LucideIcon }>;
@@ -46,30 +46,77 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "EcuaQuiz",
-    category: "Educación y cultura",
+    title: "Fundación MATI",
+    category: "Impacto social",
     status: "Operativo",
-    description: "Juego de preguntas sobre cultura, geografía e identidad ecuatoriana, creado para aprender mediante retos breves y una experiencia visual dinámica.",
-    image: "/project-ecuaquiz.png",
-    imageFit: "contain",
+    description: "Plataforma pública para visibilizar animales rescatados, facilitar adopciones y apadrinamientos, comunicar eventos y fortalecer el trabajo de la fundación en Macas.",
+    image: "/project-fundacion-mati.png",
+    imageAlt: "Página principal de Fundación MATI con información de adopción animal",
+    live: "https://fundacionmati.org/",
+    technologies: [
+      { label: "React", icon: Braces },
+      { label: "Vite", icon: Cpu },
+      { label: "Cloudflare", icon: Server },
+      { label: "Responsive", icon: Smartphone },
+    ],
+  },
+  {
+    title: "Nazareno Macas",
+    category: "Gestión de contenidos",
+    status: "Operativo",
+    description: "Ecosistema con sitio público y panel administrativo para gestionar información institucional, servicios, ministerios, actividades y recursos multimedia.",
+    image: "/project-nazareno-macas.png",
+    imageAlt: "Portada del sitio público de la Iglesia del Nazareno Macas",
+    live: "https://nazareno-macas.inmmacas29.workers.dev/",
+    technologies: [
+      { label: "React", icon: Braces },
+      { label: "Supabase", icon: Database },
+      { label: "Cloudinary", icon: Server },
+      { label: "RLS", icon: Network },
+    ],
+  },
+  {
+    title: "MoroTurismo",
+    category: "Turismo territorial",
+    status: "Operativo",
+    description: "Guía territorial para descubrir lugares, comunidades y recorridos de Morona Santiago sobre un mapa, con filtros geográficos y transporte integrado.",
+    image: "/project-moroturismo.png",
+    imageAlt: "Explorador territorial de MoroTurismo con filtros y mapa de Morona Santiago",
+    live: "https://moroturismo-sitio.vercel.app/",
     technologies: [
       { label: "JavaScript", icon: Braces },
-      { label: "HTML", icon: Code2 },
-      { label: "CSS", icon: Palette },
-      { label: "Responsive", icon: Smartphone },
+      { label: "Leaflet", icon: MapPinned },
+      { label: "Firebase", icon: Database },
+      { label: "PWA", icon: Smartphone },
+    ],
+  },
+  {
+    title: "EcuaLenguas",
+    category: "Archivo lingüístico digital",
+    status: "En desarrollo",
+    description: "Archivo digital para consultar lenguas ancestrales del Ecuador mediante alfabetos, palabras, relatos y grabaciones autorizadas, con sitio público y panel de gestión.",
+    image: "/project-ecualenguas.png",
+    imageAlt: "Portada de EcuaLenguas dedicada a preservar las lenguas del Ecuador",
+    live: "https://ecualenguas-publico.pages.dev/",
+    technologies: [
+      { label: "React", icon: Braces },
+      { label: "Supabase", icon: Database },
+      { label: "Storage", icon: Server },
+      { label: "PWA", icon: Smartphone },
     ],
   },
   {
     title: "EcuaVial",
     category: "Información vial",
     status: "Operativo",
-    description: "Consulta de cierres e incidentes en las vías del Ecuador mediante filtros, datos actualizados y un mapa interactivo de alcance nacional.",
+    description: "Monitoreo de cierres e incidentes en las vías del Ecuador mediante datos del ECU 911, reportes ciudadanos, filtros y cartografía interactiva.",
     image: "/project-ecuavial.png",
+    imageAlt: "Mapa nacional de EcuaVial con incidentes y estado de carreteras",
     live: "https://ecuavial.vercel.app/",
     technologies: [
       { label: "JavaScript", icon: Braces },
       { label: "Leaflet", icon: MapPinned },
-      { label: "APIs", icon: Database },
+      { label: "Firebase", icon: Database },
       { label: "Serverless", icon: Server },
     ],
   },
@@ -79,11 +126,12 @@ const projects: Project[] = [
     status: "Operativo",
     description: "Guía digital del transporte público de Macas para consultar líneas, paradas y recorridos con geolocalización sobre mapas interactivos.",
     image: "/project-moronabus.png",
+    imageAlt: "Mapa de MoronaBus con una ruta urbana, paradas y opciones de transporte",
     live: "https://moronabus.vercel.app/",
     technologies: [
       { label: "JavaScript", icon: Braces },
       { label: "Leaflet", icon: MapPinned },
-      { label: "Geolocalización", icon: Route },
+      { label: "Firebase", icon: Database },
       { label: "PWA", icon: Smartphone },
     ],
   },
@@ -91,8 +139,9 @@ const projects: Project[] = [
     title: "CalinAgua",
     category: "Datos ambientales",
     status: "Operativo",
-    description: "Plataforma para explorar la calidad del agua en ríos de Morona Santiago mediante registros, indicadores biológicos, gráficos y mapas interactivos.",
+    description: "Trabajo de titulación convertido en una plataforma para explorar la calidad del agua mediante registros, indicadores biológicos, gráficos y mapas.",
     image: "/project-calinagua.png",
+    imageAlt: "Panel ambiental de CalinAgua con registros de ríos y mapa interactivo",
     live: "https://calinagua.vercel.app/principal/",
     technologies: [
       { label: "JavaScript", icon: Braces },
@@ -102,31 +151,18 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Enfoque360",
-    category: "Plataforma educativa",
-    status: "Propuesta",
-    description: "Concepto visual para presentar cursos y autores con una estructura editorial clara, accesible y adaptable a diferentes dispositivos.",
-    image: "/project-enfoque360.png",
-    live: "https://edisonflores.github.io/Enfoque360/",
+    title: "EcuaQuiz",
+    category: "Educación móvil",
+    status: "En desarrollo",
+    description: "Aplicación multiplataforma de trivia sobre cultura, geografía e identidad ecuatoriana, estructurada con navegación, estado y una experiencia visual propia.",
+    image: "/project-ecuaquiz.png",
+    imageAlt: "Identidad visual de la aplicación educativa EcuaQuiz",
+    imageFit: "contain",
     technologies: [
-      { label: "Next.js", icon: Globe2 },
-      { label: "TypeScript", icon: Braces },
-      { label: "UI/UX", icon: Palette },
-      { label: "Responsive", icon: Smartphone },
-    ],
-  },
-  {
-    title: "Amazonía EC",
-    category: "Experiencia inmobiliaria",
-    status: "Propuesta",
-    description: "Propuesta web para presentar propiedades, comunicar la identidad de la marca y conducir a potenciales clientes hacia el contacto comercial.",
-    image: "/project-amazonia.png",
-    live: "https://edisonflores.github.io/amazonia-ec-demo/",
-    technologies: [
-      { label: "Next.js", icon: Globe2 },
-      { label: "TypeScript", icon: Braces },
-      { label: "UI/UX", icon: Palette },
-      { label: "Responsive", icon: Smartphone },
+      { label: "Flutter", icon: Smartphone },
+      { label: "Dart", icon: Braces },
+      { label: "Riverpod", icon: Network },
+      { label: "Multiplataforma", icon: Globe2 },
     ],
   },
 ];
@@ -166,9 +202,10 @@ const skills = [
 ];
 
 const otherProjects = [
+  { title: "Amazonía EC", tech: "Propuesta inmobiliaria · React · Vite", url: "https://edisonflores.github.io/amazonia-ec-demo/" },
+  { title: "Enfoque360", tech: "Propuesta educativa · React · Tailwind", url: "https://edisonflores.github.io/Enfoque360/" },
   { title: "Calculadora por voz", tech: "Reconocimiento de voz", url: "https://github.com/EdisonFlores/Calculadora-por-voz" },
   { title: "CRUD Python + MongoDB", tech: "Python · MongoDB", url: "https://github.com/EdisonFlores/Crud-Mongo-python-Edison-Flores" },
-  { title: "Juego de preguntas", tech: "Desarrollo web", url: "https://github.com/EdisonFlores/Juego-de-preguntas-Edison-Flores" },
   { title: "Base de datos de bovinos", tech: "Kotlin · SQLite", url: "https://github.com/EdisonFlores/Base-de-datos-Kotlin-SQLLITE" },
 ];
 
@@ -183,7 +220,7 @@ const reveal = {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [projectFilter, setProjectFilter] = useState<"Todos" | "Operativos" | "Propuestas">("Todos");
+  const [projectFilter, setProjectFilter] = useState<"Todos" | "Operativos" | "En desarrollo">("Todos");
   const { scrollYProgress } = useScroll();
   const progressX = useSpring(scrollYProgress, { stiffness: 140, damping: 24 });
   const pointerX = useMotionValue(-500);
@@ -193,7 +230,7 @@ export default function Home() {
   const visibleProjects = projects.filter(project => {
     if (projectFilter === "Todos") return true;
     if (projectFilter === "Operativos") return project.status === "Operativo";
-    return project.status === "Propuesta";
+    return project.status === "En desarrollo";
   });
 
   return (
@@ -267,11 +304,11 @@ export default function Home() {
           <div><p className="eyebrow">Trabajo seleccionado</p><h2>Proyectos</h2></div>
         </motion.div>
         <motion.div className="project-controls" {...reveal}>
-          <p>Explora productos operativos y propuestas visuales.</p>
+          <p>Selección basada en alcance, actualidad y profundidad técnica.</p>
           <div role="group" aria-label="Filtrar proyectos">
-            {(["Todos", "Operativos", "Propuestas"] as const).map(filter => (
+            {(["Todos", "Operativos", "En desarrollo"] as const).map(filter => (
               <button key={filter} className={projectFilter === filter ? "active" : ""} onClick={() => setProjectFilter(filter)} aria-pressed={projectFilter === filter}>
-                {filter}<span>{filter === "Todos" ? projects.length : projects.filter(project => filter === "Operativos" ? project.status === "Operativo" : project.status === "Propuesta").length}</span>
+                {filter}<span>{filter === "Todos" ? projects.length : projects.filter(project => filter === "Operativos" ? project.status === "Operativo" : project.status === "En desarrollo").length}</span>
               </button>
             ))}
           </div>
@@ -280,8 +317,8 @@ export default function Home() {
           {visibleProjects.map((project, index) => (
             <motion.article layout className="project-card" key={project.title} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .42, delay: (index % 2) * .05 }} whileHover={{ y: -8 }}>
               <div className={`project-image project-image-${project.imageFit ?? "cover"}`}>
-                <Image src={project.image} alt={`Vista de ${project.title}`} fill unoptimized sizes="(max-width: 760px) 92vw, 46vw" />
-                <span className={`status status-${project.status === "Operativo" ? "live" : "proposal"}`}>{project.status}</span>
+                <Image src={project.image} alt={project.imageAlt} fill unoptimized sizes="(max-width: 760px) 92vw, 46vw" />
+                <span className={`status status-${project.status === "Operativo" ? "live" : "development"}`}>{project.status}</span>
               </div>
               <div className="project-content">
                 <p className="project-category">{project.category}</p>
@@ -293,7 +330,7 @@ export default function Home() {
                 <div className="project-action">
                   {project.live ? (
                     <a href={project.live} target="_blank" rel="noreferrer">
-                      {project.status === "Propuesta" ? "Ver propuesta" : "Abrir plataforma"}<ArrowUpRight size={16} />
+                      Abrir plataforma<ArrowUpRight size={16} />
                     </a>
                   ) : <span>Presentación visual</span>}
                 </div>
@@ -303,7 +340,7 @@ export default function Home() {
         </div>
 
         <motion.div className="other-projects" {...reveal}>
-          <div className="subheading"><h3>Otros proyectos</h3><p>Prácticas y experimentos de aprendizaje.</p></div>
+          <div className="subheading"><h3>Propuestas y laboratorio</h3><p>Conceptos visuales y ejercicios que amplían el recorrido.</p></div>
           <div className="other-grid">
             {otherProjects.map(project => (
               <a key={project.title} href={project.url} target="_blank" rel="noreferrer">

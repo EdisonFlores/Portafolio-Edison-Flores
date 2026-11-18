@@ -25,9 +25,9 @@ pnpm build
 ## Contenido principal
 
 - Presentación y perfil profesional
-- Proyectos destacados: MoronaBus, Morona Santiago Vial y CalinAgua
-- Propuesta comercial Amazonia EC, identificada como pendiente de validación
-- Laboratorio tecnológico y proyectos académicos
+- Proyectos destacados: Fundación MATI, Nazareno Macas, MoroTurismo, EcuaLenguas, EcuaVial, MoronaBus, CalinAgua y EcuaQuiz
+- Propuestas comerciales Amazonía EC y Enfoque360, identificadas como pendientes de validación
+- Laboratorio tecnológico y proyectos académicos seleccionados
 - Experiencia, formación, certificaciones y contacto
 
 Los textos y enlaces están en `app/page.tsx` y el diseño responsive en `app/globals.css`.
